@@ -30,15 +30,30 @@ spec:
       imagePullSecrets:
       - name: wrelease
       restartPolicy: Always
+      
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: rest-creditscore-svc
+  labels:
+    app: rest-creditscore
 spec:
+  type: LoadBalancer
+  ports:
+  - port: 8088
   selector:
     run: rest-creditscore
-  ports:
-    - port: 8088
-      targetPort: 8080
-  type: ClusterIP
+    
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: rest-creditscore-svc
+# spec:
+#   selector:
+#     run: rest-creditscore
+#   ports:
+#     - port: 8088
+#       targetPort: 8080
+#   type: ClusterIP
