@@ -20,7 +20,7 @@ push-dockerhub:
         password: $DOCKERHUB_PASSWORD
         tag: latest
         repository: $DOCKERHUB_REPOSITORY
-        registry: https://index.docker.io/v2/
+        registry: $DOCKERHUB_REGISTRY
         cmd: java -jar  /pipeline/source/target/loan-0.1.0.war
 push:
   steps:
@@ -67,12 +67,12 @@ deploy-to-cluster:
         token: $KUBERNETES_TOKEN
         insecure-skip-tls-verify: true
         command: create namespace $WERCKER_APPLICATION_OWNER_NAME
-    - kubectl:
-        name: create secret
-        server: $KUBERNETES_MASTER
-        token: $KUBERNETES_TOKEN
-        insecure-skip-tls-verify: true
-        command: create secret docker-registry wrelease --docker-server=wcr.io --docker-username=$WERCKER_APPLICATION_OWNER_NAME --docker-password=$DOCKER_PASSWORD --docker-email=${WERCKER_APPLICATION_OWNER_NAME}@mail.com --namespace=$WERCKER_APPLICATION_OWNER_NAME
+  # - kubectl:
+  #      name: create secret
+  #      server: $KUBERNETES_MASTER
+  #      token: $KUBERNETES_TOKEN
+  #      insecure-skip-tls-verify: true
+  #      command: create secret docker-registry wrelease --docker-server=wcr.io --docker-username=$WERCKER_APPLICATION_OWNER_NAME --docker-password=$DOCKER_PASSWORD --docker-email=${WERCKER_APPLICATION_OWNER_NAME}@mail.com --namespace=$WERCKER_APPLICATION_OWNER_NAME
     - kubectl:
         server: $KUBERNETES_MASTER
         token: $KUBERNETES_TOKEN

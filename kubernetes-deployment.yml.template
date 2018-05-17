@@ -21,7 +21,7 @@ spec:
         run: rest-creditscore
     spec:
       containers:
-      - image: wcr.io/$WERCKER_APPLICATION_OWNER_NAME/creditscoreapp:$WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+      - image: fra.ocir.io/oci_core_emea_sc_schmaldienst/project02/angularapp:latest
         imagePullPolicy: Always
         name: rest-creditscore
         ports:
@@ -30,15 +30,30 @@ spec:
       imagePullSecrets:
       - name: wrelease
       restartPolicy: Always
+      
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: rest-creditscore-svc
+  labels:
+    app: rest-creditscore
 spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
   selector:
     run: rest-creditscore
-  ports:
-    - port: 8088
-      targetPort: 8080
-  type: ClusterIP
+    
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: rest-creditscore-svc
+# spec:
+#   selector:
+#     run: rest-creditscore
+#   ports:
+#     - port: 8088
+#       targetPort: 8080
+#   type: ClusterIP
