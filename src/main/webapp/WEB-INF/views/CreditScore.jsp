@@ -10,7 +10,7 @@
   <body ng-app="myApp" class="ng-cloak">
       <div class="generic-container" ng-controller="CreditController as ctrl">
           <div class="panel panel-default">
-              <div class="panel-heading"><span class="lead">My Demo - Namespace: @@NAMESPACE@@</span></div>
+              <div class="panel-heading"><span class="lead">My Java Event - Namespace: @@NAMESPACE@@</span></div>
               <div class="formcontainer">
                   <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
                       <input type="hidden" ng-model="ctrl.user.id" />
