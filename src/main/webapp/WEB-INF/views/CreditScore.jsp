@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>  
   <head>  
-    <title>AngularJS + Spring Boot</title>  
+    <title>fffAngularJS + Spring Boot</title>  
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
      <link href="<c:url value='./static/css/app.css' />" rel="stylesheet"></link>
