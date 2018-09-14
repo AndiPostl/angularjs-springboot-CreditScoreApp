@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>  
   <head>  
-    <title>fffAngularJS + Spring Boot</title>  
+    <title>AngularJS + Spring Boot</title>  
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
      <link href="<c:url value='./static/css/app.css' />" rel="stylesheet"></link>
@@ -10,7 +10,7 @@
   <body ng-app="myApp" class="ng-cloak">
       <div class="generic-container" ng-controller="CreditController as ctrl">
           <div class="panel panel-default">
-              <div class="panel-heading"><span class="lead">Hello From SOUG</span></div>
+              <div class="panel-heading"><span class="lead">Hello From Trivadis Day</span></div>
               <div class="formcontainer">
                   <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
                       <input type="hidden" ng-model="ctrl.user.id" />
