@@ -1,13 +1,6 @@
 box: combient/java-mvn  
 build:
   steps:
-    # Build Inventory REST application
-    - script:
-        name: Customize application home page
-        code: sed "s|@@NAMESPACE@@|${WERCKER_APPLICATION_OWNER_NAME}|g" -i $WERCKER_ROOT/src/main/webapp/WEB-INF/views/CreditScore.jsp
-    - script:
-        name: print source
-        code: cat $WERCKER_ROOT/src/main/webapp/WEB-INF/views/CreditScore.jsp
     - script:
         name: Maven install
         code: mvn install
@@ -21,13 +14,6 @@ push-dockerhub:
         tag: latest
         repository: $DOCKERHUB_REPOSITORY
         registry: $DOCKERHUB_REGISTRY
-        cmd: java -jar  /pipeline/source/target/loan-0.1.0.war
-push:
-  steps:
-    # Push to public docker repo Container Registry (CR)
-    - internal/docker-push:
-        tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
-        repository: wcr.io/$WERCKER_APPLICATION_OWNER_NAME/creditscoreapp
         cmd: java -jar  /pipeline/source/target/loan-0.1.0.war
 
 inject-secret:
